@@ -1,9 +1,9 @@
 def copy_file(command: str) -> None:
-    ls = command.split(" ")
-    if len(ls) != 3 or ls[0] != "cp":
+    command_parts = command.split(" ")
+    if len(command_parts) != 3 or command_parts[0] != "cp":
         return
-    c_file = ls[1]
-    new_file = ls[2]
+    c_file = command_parts[1]
+    new_file = command_parts[2]
     if c_file == new_file:
         return
     try:
@@ -11,4 +11,4 @@ def copy_file(command: str) -> None:
             file_content = file_in.read()
             file_out.write(file_content)
     except FileNotFoundError:
-        print(f"File {c_file} not found")
+        return
